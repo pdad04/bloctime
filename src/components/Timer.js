@@ -6,30 +6,59 @@ class Timer extends Component {
 
     this.state = {
       started: false,
+      onBreak: false,
       label: 'Start',
-      work: 1500,
-      rest: 300,
-      longRest: 1800
+      durationType: 'Work',
+      duration: 1500
     }
   }
 
   tick() {
     this.setState(prevState => ({
-      work: prevState.work - 1
+      duration: prevState.duration - 1
     }));
 
-    if(this.state.work <= 0){
+    if(this.state.duration <= 0){
       clearInterval(this.interval);
+      
+      if(this.state.onBreak){
+        this.setState({
+          onBreak: false,
+          duration: 1500,
+          label: 'Start',
+          durationType: 'Work',
+          started: false
+        });
+      }else{
+        this.setState({
+          onBreak: true,
+          duration: 300,
+          label: 'Start',
+          durationType: 'Break',
+          started: false
+        });
+      }
     }
   }
 
   timeTrigger() {
-    if(this.state.started){
+    console.log(this.state.onBreak);
+    if(this.state.started && !this.state.onBreak){
       this.setState({
         label: 'Start',
         started: false,
-        work: 1500,
+        duration: 1500,
       });
+
+      clearInterval(this.interval);
+      return;
+    }else if (this.state.started && this.state.onBreak) {
+      this.setState({
+        label: 'Start',
+        started: false,
+        duration: 300
+      });
+
       clearInterval(this.interval);
       return;
     }
@@ -62,7 +91,8 @@ class Timer extends Component {
   render() {
     return (
       <div>
-        <h1>{ this.formatTime(this.state.work) } </h1>
+        <h1>{this.state.durationType}</h1>
+        <h2>{ this.formatTime(this.state.duration) } </h2>
         <button onClick={ () => this.timeTrigger() }>{this.state.label}</button>
       </div>
     );
