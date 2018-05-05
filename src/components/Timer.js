@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Timer extends Component {
   constructor(props){
     super(props);
+    const audioSrc = '/assets/sounds/250629__kwahmah-02__alarm1.mp3';
 
     this.state = {
       started: false,
@@ -11,6 +12,9 @@ class Timer extends Component {
       durationType: 'Work',
       duration: 1500
     }
+
+    this.audioElement = document.createElement('audio');
+    this.audioElement.src = audioSrc;
   }
 
   tick() {
@@ -19,8 +23,9 @@ class Timer extends Component {
     }));
 
     if(this.state.duration <= 0){
+      this.audioElement.play();
       clearInterval(this.interval);
-      
+
       if(this.state.onBreak){
         this.setState({
           onBreak: false,
@@ -42,7 +47,6 @@ class Timer extends Component {
   }
 
   timeTrigger() {
-    console.log(this.state.onBreak);
     if(this.state.started && !this.state.onBreak){
       this.setState({
         label: 'Start',
