@@ -22,7 +22,7 @@ class App extends Component {
           As implemented now, the app requires a physical piece of paper to track the tasks,
           but overtime I would like to implement a task list within the app.
         </Modal>
-      </Navbar>;
+      </Navbar>
         <Timer />
       </div>
     );
