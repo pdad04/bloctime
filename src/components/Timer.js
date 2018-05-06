@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Button,Col, Row} from 'react-materialize';
+import './css/Timer.css';
 
 class Timer extends Component {
   constructor(props){
@@ -94,10 +96,36 @@ class Timer extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.durationType}</h1>
-        <h2>{ this.formatTime(this.state.duration) } </h2>
-        <button onClick={ () => this.timeTrigger() }>{this.state.label}</button>
+      <div id="content">
+        <div id="timer">
+          <Row>
+            <Col l={12} s={12}>
+              <h1 id="durationType">{this.state.durationType}</h1>
+              <h2 id="duration">{ this.formatTime(this.state.duration) } </h2>
+            </Col>
+          </Row>
+        </div>
+        <div id="buttons">
+            <Button waves="light" className="green" id="start" onClick={ () => this.timeTrigger() }>{this.state.label}</Button>
+        </div>
+        <div id="about">
+          <h2><em>The Pomodoro Technique</em></h2>
+          <p>
+            The Pomodoro Tecnique is a time management method. In a nutshell the technique works by breaking down work into twenty-five minute intervals,
+            seperated by short breaks. For a detailed explanation take a look the
+            <a href="https://caps.ucsd.edu/Downloads/tx_forms/koch/pomodoro_handouts/ThePomodoroTechnique_v1-3.pdf" target="_blank"> <b>official document</b></a>
+          </p>
+          <h5>The basic principles are as follows</h5>
+          <ul id="basic-principles">
+            <li>Decide on the task to be done</li>
+            <li>Start the twenty-five minute timer</li>
+            <li>Work on the task</li>
+            <li>When the timer rings, stop working! Put a checkmark on a piece of paper</li>
+            <li>If you have less than four(4) checkmarks, you will take a five minute break.</li>
+            <li>If you have four checkmarks you will take a thirty minute break</li>
+            <li>After the thirty minute break, reset your checkmarks to zero, then go back to the first step</li>
+          </ul>
+        </div>
       </div>
     );
   }
