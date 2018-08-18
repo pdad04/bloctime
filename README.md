@@ -9,3 +9,20 @@ During a 25-minute session, you focus on a task. Checking email, answering the p
 When implemented with discipline, the Pomodoro Technique can be a powerful tool to increase your productivity. You will build an application to manage your Pomodoro sessions.
 
 To learn more about the specifics of the Pomodoro Technique, read the [detailed guide](http://caps.ucsd.edu/Downloads/tx_forms/koch/pomodoro_handouts/ThePomodoroTechnique_v1-3.pdf)
+
+# Getting Started
+
+### Prerequisites
+
+You will need to install
+
+- React
+
+`npm install react`
+
+- React Materialize
+
+`npm install react-materialize`
+
+### Running
+`npm start`

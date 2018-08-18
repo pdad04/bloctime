@@ -1,9 +1,9 @@
 #timer{
   font-family: 'IBM Plex Sans', sans-serif;
-  width: 960px;
+  width: 75%;
   margin: 50px auto;
   background-color: #5381cc;
-  color: white;
+  color: #ffffff;
   border-radius: 5px;
 }
 
@@ -12,7 +12,7 @@
 }
 
 #about {
-  width: 960px;
+  width: 75%;
   margin: 15px auto;
   height: auto;
   padding: 5px;
